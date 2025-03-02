@@ -1,10 +1,10 @@
-name: youtube_transcript_dart
-description: "A Dart package for fetching YouTube video transcripts."
+name: transcriptify
+description: "A Dart package for fetching YouTube transcripts."
 version: 0.1.0
-repository: https://github.com/yourusername/youtube_transcript_dart
+repository: https://github.com/gabebro123/transcriptify
 
 environment:
-  sdk: ">=2.18.0 <3.0.0"
+  sdk: ">=2.18.0 <4.0.0"
 
 dependencies:
   http: ^1.3.0
