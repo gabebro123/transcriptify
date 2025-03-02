@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:youtube_transcript_dart/src/exceptions.dart';
+import '../exceptions.dart';  // ✅ Correct
 import 'transcript_list.dart';  // ✅ Ensure this exists and defines `TranscriptList`
 
 class TranscriptFetcher {

@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:youtube_transcript_dart/src/html_unescape.dart';
+import '../lib/src/html_unescape.dart';  // ✅ Correct
 
 void main() {
   test('Unescape HTML entities', () {

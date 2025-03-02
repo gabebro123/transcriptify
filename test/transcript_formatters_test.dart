@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:youtube_transcript_dart/src/transcript_formatters.dart';
+import '../lib/src/transcript_formatters.dart';
 
 void main() {
   List<Map<String, dynamic>> transcript = [

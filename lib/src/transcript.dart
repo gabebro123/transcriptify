@@ -1,5 +1,5 @@
 import 'package:http/http.dart' as http;
-import 'package:youtube_transcript_dart/src/exceptions.dart';
+import '../src/exceptions.dart';  // ✅ Correct
 import 'transcript_parser.dart';
 
 class Transcript {
