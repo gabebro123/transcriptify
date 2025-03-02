@@ -1,4 +1,4 @@
-import 'package:youtube_transcript_dart/src/exceptions.dart'; // Make sure to import the exceptions file
+import '../src/exceptions.dart';  // ✅ Relative path
 import 'package:http/http.dart' as http; // Import the http package
 import 'dart:convert'; // Import the dart:convert package for JSON decoding
 

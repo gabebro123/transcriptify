@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
-import 'package:youtube_transcript_dart/youtube_transcript_dart_base.dart';
-import 'package:youtube_transcript_dart/src/exceptions.dart';
+import 'package:transcriptify/youtube_transcript_dart_base.dart';
+import 'package:transcriptify/src/exceptions.dart';
 
 void main() {
   test('Fetch transcript for a valid video ID', () async {

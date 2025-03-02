@@ -1,5 +1,5 @@
-import 'package:youtube_transcript_dart/src/transcript_fetcher.dart';
-import 'package:youtube_transcript_dart/src/exceptions.dart';
+import '../src/exceptions.dart';  // ✅ Relative path
+import '../src/transcript_fetcher.dart';  // ✅ Relative path
 import 'package:http/http.dart' as http;
 
 class YouTubeTranscriptApi {
@@ -55,3 +55,21 @@ class YouTubeTranscriptApi {
     return data;
   }
 }
+```
+# filepath: /C:/Users/Gabe/youtube_transcript_dart/pubspec.yaml
+name: transcriptify
+description: "A Dart package for fetching YouTube transcripts."
+version: 0.1.0
+repository: https://github.com/gabebro123/transcriptify
+
+environment:
+  sdk: ">=2.18.0 <4.0.0"
+
+dependencies:
+  http: ^1.3.0
+  html: ^0.15.5
+  js: ^0.7.1
+  youtube_transcript_dart: ^0.1.0  # Add this line
+
+dev_dependencies:
+  test: ^1.20.0
