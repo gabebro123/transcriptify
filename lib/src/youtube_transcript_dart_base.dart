@@ -46,7 +46,7 @@ class YouTubeTranscriptApi {
         data[videoId] = await getTranscript(videoId, languages: languages);
       } catch (e) {
         if (!continueAfterError) {
-          throw e;
+          rethrow;
         }
         failedVideos.add(videoId);
       }

@@ -86,7 +86,7 @@ class SRTFormatter extends _TextBasedFormatter {
 
   @override
   String _formatTranscriptHeader(List<String> lines) {
-    return lines.join("\n\n") + "\n";
+    return "${lines.join("\n\n")}\n";
   }
 
   @override
@@ -104,7 +104,7 @@ class WebVTTFormatter extends _TextBasedFormatter {
 
   @override
   String _formatTranscriptHeader(List<String> lines) {
-    return "WEBVTT\n\n" + lines.join("\n\n") + "\n";
+    return "WEBVTT\n\n${lines.join("\n\n")}\n";
   }
 
   @override
