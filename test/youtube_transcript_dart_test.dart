@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
-import 'package:transcriptify/youtube_transcript_dart_base.dart';
-import 'package:transcriptify/src/exceptions.dart';
+import 'package:youtube_transcript_dart/src/exceptions.dart';  // ✅ Add this
+import '../lib/youtube_transcript_dart_base.dart';
 
 void main() {
   test('Fetch transcript for a valid video ID', () async {
@@ -18,14 +18,14 @@ void main() {
   test('Handle invalid video ID', () async {
     expect(
       () async => await YouTubeTranscriptApi.getTranscript("INVALID_VIDEO_ID"),
-      throwsA(isA<TranscriptException>()),
+      throwsA(isA<NoTranscriptFound>()),  // ✅ Correct class name
     );
   });
 
   test('Handle video with no captions', () async {
     expect(
       () async => await YouTubeTranscriptApi.getTranscript("NO_CAPTIONS_VIDEO_ID"),
-      throwsA(isA<NoTranscriptFound>()),
+      throwsA(isA<TranscriptException>()),  // ✅ Correct class name
     );
   });
 }

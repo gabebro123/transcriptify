@@ -21,13 +21,13 @@ class YouTubeTranscriptApi {
         }
       }
 
-      throw NoTranscriptFound(videoId);  // Correct exception now thrown
+      throw NoTranscriptFound(videoId);
     } catch (e) {
       if (e is NoTranscriptFound) {
-        rethrow;  // Preserve NoTranscriptFound exception
+        rethrow;
       }
       if (e is InvalidVideoId) {
-        throw NoTranscriptFound(videoId);  // Handle specific case for no captions
+        throw NoTranscriptFound(videoId);
       }
       throw TranscriptException("Error fetching transcript: $e");
     }

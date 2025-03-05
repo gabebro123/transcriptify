@@ -1,7 +1,7 @@
 import 'package:youtube_transcript_dart/src/exceptions.dart';  // Corrected import path
-import 'package:http/http.dart' as http; // Import the http package
-import 'dart:convert'; // Import the dart:convert package for JSON decoding
-import 'transcript_parser.dart'; // Ensure TranscriptParser is imported
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'transcript_parser.dart';  // Ensure TranscriptParser is imported
 
 class YouTubeTranscript {
   static Future<List<Map<String, dynamic>>> getTranscript(
@@ -21,7 +21,7 @@ class YouTubeTranscript {
       }
     }
 
-    throw NoTranscriptFound(videoId);  // ✅ Changed from `TranscriptException`
+    throw NoTranscriptFound(videoId);
   }
 
   static Future<List<Map<String, dynamic>>> listTranscripts(
@@ -37,13 +37,13 @@ class YouTubeTranscript {
       final captionsJson = _extractCaptionsJson(response.body, videoId);
 
       if (captionsJson.isEmpty) {
-        throw NoTranscriptFound(videoId);  // ✅ Ensure correct exception is thrown
+        throw NoTranscriptFound(videoId);
       }
 
       return [captionsJson];
     } catch (e) {
       if (e is NoTranscriptFound) {
-        rethrow;  // ✅ Preserve NoTranscriptFound
+        rethrow;
       }
       throw TranscriptException("Error fetching transcript list: $e");
     }
@@ -61,7 +61,6 @@ class YouTubeTranscript {
     List<String> splitHtml = html.split('"captions":');
 
     if (splitHtml.length <= 1) {
-      // Validate video ID format
       if (!_isValidYouTubeId(videoId)) {
         throw InvalidVideoId(videoId);
       }

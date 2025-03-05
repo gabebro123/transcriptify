@@ -26,11 +26,11 @@ class TranscriptsDisabled extends TranscriptException {
   TranscriptsDisabled(String videoId) : super('Transcripts are disabled for video ID: $videoId');
 }
 
-class YouTubeRequestFailed extends TranscriptException {
+class YouTubeRequestFailed implements Exception {
   final int statusCode;
   final String videoId;
 
-  YouTubeRequestFailed(this.statusCode, this.videoId) : super('Request failed with status code $statusCode for video ID $videoId');
+  YouTubeRequestFailed(this.statusCode, this.videoId);
 
   @override
   String toString() => 'YouTubeRequestFailed: Request failed with status code $statusCode for video ID $videoId';

@@ -1,5 +1,5 @@
 import 'package:http/http.dart' as http;
-import 'transcript.dart';
+import 'package:youtube_transcript_dart/src/transcript.dart';  // ✅ Correct
 
 class TranscriptList {
   final Map<String, Transcript> manuallyCreatedTranscripts;
