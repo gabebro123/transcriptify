@@ -5,14 +5,17 @@ class TranscriptParser {
   /// Parses a YouTube transcript XML response into a list of transcript entries.
   static List<Map<String, dynamic>> parseTranscript(String xmlString) {
     try {
-      final Document document = parse(xmlString);  // Ensure it's a valid Document
+      final Document document =
+          parse(xmlString); // Ensure it's a valid Document
       final Element? rootElement = document.documentElement;
 
       if (rootElement == null) {
-        throw Exception("Invalid transcript XML structure: No root element found.");
+        throw Exception(
+            "Invalid transcript XML structure: No root element found.");
       }
 
-      final List<Element> transcriptElements = rootElement.getElementsByTagName("text");
+      final List<Element> transcriptElements =
+          rootElement.getElementsByTagName("text");
 
       return transcriptElements.map((element) {
         return {

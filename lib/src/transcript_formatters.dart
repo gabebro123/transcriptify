@@ -54,7 +54,8 @@ abstract class _TextBasedFormatter extends TextFormatter {
 
   String _formatTranscriptHeader(List<String> lines);
 
-  String _formatTranscriptHelper(int index, String timeText, Map<String, dynamic> line);
+  String _formatTranscriptHelper(
+      int index, String timeText, Map<String, dynamic> line);
 
   String _secondsToTimestamp(double time) {
     int hours = (time ~/ 3600);
@@ -70,7 +71,8 @@ abstract class _TextBasedFormatter extends TextFormatter {
     for (int i = 0; i < transcript.length; i++) {
       double start = transcript[i]["start"];
       double end = start + (transcript[i]["duration"] ?? 0);
-      String timeText = "${_secondsToTimestamp(start)} --> ${_secondsToTimestamp(end)}";
+      String timeText =
+          "${_secondsToTimestamp(start)} --> ${_secondsToTimestamp(end)}";
       lines.add(_formatTranscriptHelper(i, timeText, transcript[i]));
     }
     return _formatTranscriptHeader(lines);
@@ -90,7 +92,8 @@ class SRTFormatter extends _TextBasedFormatter {
   }
 
   @override
-  String _formatTranscriptHelper(int index, String timeText, Map<String, dynamic> line) {
+  String _formatTranscriptHelper(
+      int index, String timeText, Map<String, dynamic> line) {
     return "${index + 1}\n$timeText\n${line["text"]}";
   }
 }
@@ -108,7 +111,8 @@ class WebVTTFormatter extends _TextBasedFormatter {
   }
 
   @override
-  String _formatTranscriptHelper(int index, String timeText, Map<String, dynamic> line) {
+  String _formatTranscriptHelper(
+      int index, String timeText, Map<String, dynamic> line) {
     return "$timeText\n${line["text"]}";
   }
 }

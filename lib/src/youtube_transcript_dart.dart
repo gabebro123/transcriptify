@@ -1,14 +1,12 @@
-import 'package:youtube_transcript_dart/src/exceptions.dart';  // Corrected import path
+import 'package:youtube_transcript_dart/src/exceptions.dart'; // Corrected import path
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'transcript_parser.dart';  // Ensure TranscriptParser is imported
+import 'transcript_parser.dart'; // Ensure TranscriptParser is imported
 
 class YouTubeTranscript {
-  static Future<List<Map<String, dynamic>>> getTranscript(
-      String videoId,
+  static Future<List<Map<String, dynamic>>> getTranscript(String videoId,
       {List<String> languages = const ["en"],
       Map<String, String>? proxies}) async {
-
     List<Map<String, dynamic>> transcriptList =
         await listTranscripts(videoId, proxies: proxies);
 
@@ -24,14 +22,15 @@ class YouTubeTranscript {
     throw NoTranscriptFound(videoId);
   }
 
-  static Future<List<Map<String, dynamic>>> listTranscripts(
-      String videoId, {Map<String, String>? proxies}) async {
+  static Future<List<Map<String, dynamic>>> listTranscripts(String videoId,
+      {Map<String, String>? proxies}) async {
     try {
       final url = Uri.parse("https://www.youtube.com/watch?v=$videoId");
       final response = await http.get(url, headers: proxies ?? {});
 
       if (response.statusCode != 200) {
-        throw TranscriptException("Failed to fetch transcript list for $videoId");
+        throw TranscriptException(
+            "Failed to fetch transcript list for $videoId");
       }
 
       final captionsJson = _extractCaptionsJson(response.body, videoId);
@@ -49,7 +48,8 @@ class YouTubeTranscript {
     }
   }
 
-  static Future<List<Map<String, dynamic>>> _fetchTranscript(String baseUrl) async {
+  static Future<List<Map<String, dynamic>>> _fetchTranscript(
+      String baseUrl) async {
     final response = await http.get(Uri.parse(baseUrl));
     if (response.statusCode != 200) {
       throw TranscriptException("Failed to fetch transcript from $baseUrl");
@@ -57,7 +57,8 @@ class YouTubeTranscript {
     return TranscriptParser.parseTranscript(response.body);
   }
 
-  static Map<String, dynamic> _extractCaptionsJson(String html, String videoId) {
+  static Map<String, dynamic> _extractCaptionsJson(
+      String html, String videoId) {
     List<String> splitHtml = html.split('"captions":');
 
     if (splitHtml.length <= 1) {
@@ -75,7 +76,8 @@ class YouTubeTranscript {
     }
 
     try {
-      String jsonString = splitHtml[1].split(',"videoDetails')[0].replaceAll("\n", "");
+      String jsonString =
+          splitHtml[1].split(',"videoDetails')[0].replaceAll("\n", "");
       Map<String, dynamic> jsonData = jsonDecode(jsonString);
 
       if (jsonData["playerCaptionsTracklistRenderer"] == null) {
@@ -84,7 +86,8 @@ class YouTubeTranscript {
 
       return jsonData["playerCaptionsTracklistRenderer"];
     } catch (e) {
-      throw TranscriptException("Failed to parse captions JSON for video: $videoId. Error: $e");
+      throw TranscriptException(
+          "Failed to parse captions JSON for video: $videoId. Error: $e");
     }
   }
 

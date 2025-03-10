@@ -1,5 +1,5 @@
-import 'package:youtube_transcript_dart/src/exceptions.dart';  // Corrected import path
-import 'package:youtube_transcript_dart/src/transcript_fetcher.dart';  // Corrected import path
+import 'package:youtube_transcript_dart/src/exceptions.dart'; // Corrected import path
+import 'package:youtube_transcript_dart/src/transcript_fetcher.dart'; // Corrected import path
 import 'package:http/http.dart' as http_client;
 
 class YouTubeTranscriptApi {
@@ -21,13 +21,14 @@ class YouTubeTranscriptApi {
         }
       }
 
-      throw NoTranscriptFound(videoId);  // Correct exception now thrown
+      throw NoTranscriptFound(videoId); // Correct exception now thrown
     } catch (e) {
       if (e is NoTranscriptFound) {
-        rethrow;  // Preserve NoTranscriptFound exception
+        rethrow; // Preserve NoTranscriptFound exception
       }
       if (e is InvalidVideoId) {
-        throw NoTranscriptFound(videoId);  // Handle specific case for no captions
+        throw NoTranscriptFound(
+            videoId); // Handle specific case for no captions
       }
       throw TranscriptException("Error fetching transcript: $e");
     }

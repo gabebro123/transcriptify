@@ -1,5 +1,5 @@
-import 'package:youtube_transcript_dart/src/exceptions.dart';  // Corrected import path
-import 'package:youtube_transcript_dart/src/transcript_fetcher.dart';  // Corrected import path
+import 'package:youtube_transcript_dart/src/exceptions.dart'; // Corrected import path
+import 'package:youtube_transcript_dart/src/transcript_fetcher.dart'; // Corrected import path
 import 'package:http/http.dart' as http_client;
 
 class YouTubeTranscriptApi {

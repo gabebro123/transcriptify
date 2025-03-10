@@ -1,5 +1,5 @@
 import 'package:http/http.dart' as http;
-import 'package:youtube_transcript_dart/src/transcript.dart';  // ✅ Correct
+import 'package:youtube_transcript_dart/src/transcript.dart'; // ✅ Correct
 
 class TranscriptList {
   final Map<String, Transcript> manuallyCreatedTranscripts;
@@ -10,7 +10,8 @@ class TranscriptList {
     required this.generatedTranscripts,
   });
 
-  static Future<TranscriptList> build(http.Client httpClient, String videoId, Map<String, dynamic> captionsJson) async {
+  static Future<TranscriptList> build(http.Client httpClient, String videoId,
+      Map<String, dynamic> captionsJson) async {
     final manuallyCreatedTranscripts = <String, Transcript>{};
     final generatedTranscripts = <String, Transcript>{};
 

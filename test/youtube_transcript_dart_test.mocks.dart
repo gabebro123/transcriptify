@@ -37,16 +37,15 @@ class MockYouTubeTranscriptApi extends _i1.Mock
     List<String>? languages = const ['en'],
   }) =>
       (super.noSuchMethod(
-            Invocation.method(
-              #getTranscript,
-              [videoId],
-              {#languages: languages},
-            ),
-            returnValue: _i3.Future<List<Map<String, dynamic>>>.value(
-              <Map<String, dynamic>>[],
-            ),
-          )
-          as _i3.Future<List<Map<String, dynamic>>>);
+        Invocation.method(
+          #getTranscript,
+          [videoId],
+          {#languages: languages},
+        ),
+        returnValue: _i3.Future<List<Map<String, dynamic>>>.value(
+          <Map<String, dynamic>>[],
+        ),
+      ) as _i3.Future<List<Map<String, dynamic>>>);
 
   @override
   _i3.Future<Map<String, List<Map<String, dynamic>>>> getTranscripts(
@@ -55,15 +54,13 @@ class MockYouTubeTranscriptApi extends _i1.Mock
     bool? continueAfterError = false,
   }) =>
       (super.noSuchMethod(
-            Invocation.method(
-              #getTranscripts,
-              [videoIds],
-              {#languages: languages, #continueAfterError: continueAfterError},
-            ),
-            returnValue:
-                _i3.Future<Map<String, List<Map<String, dynamic>>>>.value(
-                  <String, List<Map<String, dynamic>>>{},
-                ),
-          )
-          as _i3.Future<Map<String, List<Map<String, dynamic>>>>);
+        Invocation.method(
+          #getTranscripts,
+          [videoIds],
+          {#languages: languages, #continueAfterError: continueAfterError},
+        ),
+        returnValue: _i3.Future<Map<String, List<Map<String, dynamic>>>>.value(
+          <String, List<Map<String, dynamic>>>{},
+        ),
+      ) as _i3.Future<Map<String, List<Map<String, dynamic>>>>);
 }

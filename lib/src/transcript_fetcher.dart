@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:youtube_transcript_dart/src/exceptions.dart';  // ✅ Correct
+import 'package:youtube_transcript_dart/src/exceptions.dart'; // ✅ Correct
 import 'transcript_list.dart';
 
 class TranscriptFetcher {
@@ -33,7 +33,8 @@ class TranscriptFetcher {
     }
 
     try {
-      String jsonString = splitHtml[1].split(',"videoDetails')[0].replaceAll("\n", "");
+      String jsonString =
+          splitHtml[1].split(',"videoDetails')[0].replaceAll("\n", "");
       Map<String, dynamic> jsonData = jsonDecode(jsonString);
 
       if (jsonData["playerCaptionsTracklistRenderer"] == null) {
@@ -42,13 +43,16 @@ class TranscriptFetcher {
 
       return jsonData["playerCaptionsTracklistRenderer"];
     } catch (e) {
-      throw TranscriptException("Failed to parse captions JSON for video: $videoId. Error: $e");
+      throw TranscriptException(
+          "Failed to parse captions JSON for video: $videoId. Error: $e");
     }
   }
 
   Future<String> _fetchVideoHtml(String videoId) async {
-    Uri url = Uri.parse("https://www.youtube.com/watch?v=${Uri.encodeFull(videoId)}");
-    final response = await _httpClient.get(url, headers: {"Accept-Language": "en-US"});
+    Uri url =
+        Uri.parse("https://www.youtube.com/watch?v=${Uri.encodeFull(videoId)}");
+    final response =
+        await _httpClient.get(url, headers: {"Accept-Language": "en-US"});
 
     if (response.statusCode != 200) {
       throw YouTubeRequestFailed(response.statusCode, videoId);

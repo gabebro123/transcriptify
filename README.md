@@ -12,7 +12,7 @@ youtube_transcript_dart is a Dart package that fetches YouTube video transcripts
 Using dart pub
 Run the following command to install the package:
 
-sh
+\\\sh
 Copy
 Edit
 dart pub add youtube_transcript_dart

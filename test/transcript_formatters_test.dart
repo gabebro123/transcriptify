@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:youtube_transcript_dart/src/transcript_formatters.dart';  // Corrected import path
+import 'package:youtube_transcript_dart/src/transcript_formatters.dart'; // Corrected import path
 
 void main() {
   List<Map<String, dynamic>> transcript = [
@@ -17,8 +17,10 @@ void main() {
   test('JSON Formatter', () {
     var formatter = JSONFormatter();
     String result = formatter.formatTranscript(transcript);
-    expect(result, equals('[{"text":"Hello, world!","start":0.0,"duration":2.0},'
-                          '{"text":"This is a test.","start":2.5,"duration":3.0}]'));
+    expect(
+        result,
+        equals('[{"text":"Hello, world!","start":0.0,"duration":2.0},'
+            '{"text":"This is a test.","start":2.5,"duration":3.0}]'));
   });
 
   test('Text Formatter', () {
@@ -31,7 +33,8 @@ void main() {
     var formatter = SRTFormatter();
     String result = formatter.formatTranscript(transcript);
     expect(result, contains("1\n00:00:00,000 --> 00:00:02,000\nHello, world!"));
-    expect(result, contains("2\n00:00:02,500 --> 00:00:05,500\nThis is a test."));
+    expect(
+        result, contains("2\n00:00:02,500 --> 00:00:05,500\nThis is a test."));
   });
 
   test('WebVTT Formatter', () {

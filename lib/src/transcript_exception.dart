@@ -7,7 +7,8 @@ class TranscriptException implements Exception {
 }
 
 class NoTranscriptFound extends TranscriptException {
-  NoTranscriptFound(String videoId) : super('No transcript found for video ID: $videoId');
+  NoTranscriptFound(String videoId)
+      : super('No transcript found for video ID: $videoId');
 }
 
 class InvalidVideoId extends TranscriptException {
@@ -15,15 +16,18 @@ class InvalidVideoId extends TranscriptException {
 }
 
 class TooManyRequests extends TranscriptException {
-  TooManyRequests(String videoId) : super('Too many requests for video ID: $videoId');
+  TooManyRequests(String videoId)
+      : super('Too many requests for video ID: $videoId');
 }
 
 class VideoUnavailable extends TranscriptException {
-  VideoUnavailable(String videoId) : super('Video unavailable for video ID: $videoId');
+  VideoUnavailable(String videoId)
+      : super('Video unavailable for video ID: $videoId');
 }
 
 class TranscriptsDisabled extends TranscriptException {
-  TranscriptsDisabled(String videoId) : super('Transcripts are disabled for video ID: $videoId');
+  TranscriptsDisabled(String videoId)
+      : super('Transcripts are disabled for video ID: $videoId');
 }
 
 class YouTubeRequestFailed implements Exception {
@@ -33,5 +37,6 @@ class YouTubeRequestFailed implements Exception {
   YouTubeRequestFailed(this.statusCode, this.videoId);
 
   @override
-  String toString() => 'YouTubeRequestFailed: Request failed with status code $statusCode for video ID $videoId';
+  String toString() =>
+      'YouTubeRequestFailed: Request failed with status code $statusCode for video ID $videoId';
 }

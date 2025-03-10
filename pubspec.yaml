@@ -1,5 +1,9 @@
 name: youtube_transcript_dart
-description: "A Dart package for fetching YouTube transcripts."
+description: " Transcriptify is a Dart package that allows you to easily fetch and parse YouTube video transcripts.
+  It provides support for multiple languages, automatic and manually created subtitles, 
+  and can be integrated into Dart or Flutter applications. This package simplifies extracting 
+  captions from YouTube videos without requiring API keys, making it a lightweight and 
+  developer-friendly solution."
 version: 0.1.0
 repository: https://github.com/gabebro123/transcriptify
 

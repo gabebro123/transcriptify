@@ -1,13 +1,13 @@
-import 'package:youtube_transcript_dart/src/transcript_exception.dart';  // Corrected import path
-import 'package:youtube_transcript_dart/src/transcript_fetcher.dart';  // Corrected import path
+import 'package:youtube_transcript_dart/src/transcript_exception.dart'; // Corrected import path
+import 'package:youtube_transcript_dart/src/transcript_fetcher.dart'; // Corrected import path
 import 'package:http/http.dart' as http_client;
 
 class YouTubeTranscriptApi {
   static final http_client.Client _httpClient = http_client.Client();
 
   /// Fetches the transcript for a given YouTube video ID.
-  Future<List<Map<String, dynamic>>> getTranscript(
-      String videoId, {List<String> languages = const ["en"]}) async {
+  Future<List<Map<String, dynamic>>> getTranscript(String videoId,
+      {List<String> languages = const ["en"]}) async {
     try {
       final fetcher = TranscriptFetcher(_httpClient);
       final transcriptList = await fetcher.fetch(videoId);
@@ -21,13 +21,14 @@ class YouTubeTranscriptApi {
         }
       }
 
-      throw NoTranscriptFound(videoId);  // Correct exception now thrown
+      throw NoTranscriptFound(videoId); // Correct exception now thrown
     } catch (e) {
       if (e is NoTranscriptFound) {
-        rethrow;  // Preserve NoTranscriptFound exception
+        rethrow; // Preserve NoTranscriptFound exception
       }
       if (e is InvalidVideoId) {
-        throw NoTranscriptFound(videoId);  // Handle specific case for no captions
+        throw NoTranscriptFound(
+            videoId); // Handle specific case for no captions
       }
       throw TranscriptException("Error fetching transcript: $e");
     }
@@ -53,7 +54,8 @@ class YouTubeTranscriptApi {
     }
 
     if (data.isEmpty) {
-      throw TranscriptException("No transcripts found for the provided video IDs.");
+      throw TranscriptException(
+          "No transcripts found for the provided video IDs.");
     }
 
     return data;
